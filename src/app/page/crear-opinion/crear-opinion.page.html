@@ -1,0 +1,51 @@
+<app-header title="CREAR OPINION" formAnterior="ver-opiniones"></app-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="text-center">CREAR OPINION</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="crearOpinionForm" (ngSubmit)="onCrearOpinion()" class="my-2">
+
+        <ion-item hidden="true">
+          <ion-label></ion-label>
+          <ion-input type="number" formControlName="id_pelicula" [readonly]="true"></ion-input>
+        </ion-item>
+
+        <ion-item hidden="true">
+          <ion-label></ion-label>
+          <ion-input type="number" formControlName="id_usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">opinion</ion-label>
+          <ion-input type="text" formControlName="opinion"></ion-input>
+        </ion-item>
+        <ion-note color="danger"
+          *ngIf="crearOpinionForm.get('opinion')?.hasError('required') && crearOpinionForm.get('opinion')?.touched">
+          Opinion is required
+        </ion-note>
+
+        <ion-item>
+          <ion-label position="floating">clasificacion</ion-label>
+          <ion-range  aria-label="Custom range"
+          [min]="0"
+          [max]="10"
+          [value]="5"
+          [pin]="true"
+          [ticks]="true"
+          [snaps]="true" formControlName="clasificacion"
+            [snaps]="true"></ion-range>
+        </ion-item>
+        <ion-note color="danger"
+          *ngIf="crearOpinionForm.get('clasificacion')?.hasError('required') && crearOpinionForm.get('clasificacion')?.touched">
+          clasificacion is required
+        </ion-note>
+        <ion-button type="submit" [disabled]="!crearOpinionForm.valid" expand="block" class="mt-4">ACEPTAR</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

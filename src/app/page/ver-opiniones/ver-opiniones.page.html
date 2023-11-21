@@ -1,0 +1,27 @@
+<app-header title="OPINIONES" formAnterior="home" ></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ver-opiniones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-card *ngFor="let item of Items"[routerLink]="item.redirecTo" detail="true">
+  <ion-card-content>
+    <ion-card-title>{{item.clasicacion}}/10</ion-card-title>
+    <ion-card-subtitle>{{item.opinion}}</ion-card-subtitle>
+    <ion-card-subtitle>{{item.fecha}}</ion-card-subtitle>
+  </ion-card-content>
+</ion-card>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="crearOpinion(this.id_pelicula)" routerDirection="back" expand="block" class="mt-4">DEJAR OPINION</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

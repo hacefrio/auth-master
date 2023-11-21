@@ -1,0 +1,20 @@
+<app-header title="Home" formAnterior="auth"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngFor="let item of Items"[routerLink]="item.redirecTo" detail="true">
+    <ion-card-content>
+      <ion-card-title>{{item.nombre}}</ion-card-title>
+      <ion-img src= "http://localhost:3000/imagenes{{item.imagen}}"></ion-img>
+      <ion-card-subtitle>Director: {{item.director}}</ion-card-subtitle>
+      <ion-card-subtitle>Duracion: {{item.duracion}}</ion-card-subtitle>
+      <ion-button color="primary"  (click)="verOpiniones(item.id)" expand="block" class="mt-4">ver opiniones</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
